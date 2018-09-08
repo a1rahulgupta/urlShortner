@@ -32,25 +32,44 @@ Test Cases of URL Shorton Web application:-
 
 ## Test Cases for Social URL Shortner-
 
-###- Verify that cursor is focused on url text box on the page load.
+1- Verify that cursor is focused on url text box on the page load.
+
 2- Verify that the url text box contains elements such as link , webUrl, with http or https.
+
 3- Verify that User is able to make short url with Valid webUrl.
+
 4- Verify that User is not able to make short url with invalid webUrl or invalid link.
+
 5- Verify that User is not able to make short url with Valid protocol and invalid domain.
+
 6- Verify that User is not able to make short url with invalid protocol and Valid domain.
+
 7- Verify that User is not able to make short url with blank Url.
+
 8- Verify that User is not able to get hours analytics with valid input.
+
 9- Verify that User is not able to get date analytics with valid input.
+
 10-Verify the Histogram with valid date. 
+
 11- Verify the Histogram with valid hours. 
+
 12- Verify the Histogram with valid years. 
+
 12- Verify the Histogram with valid month. 
+
 13- Verify the Histogram with valid click count. 
+
 15- Verify the short url redirect to long url.
+
 16- Verify the plateform value for short url.
+
 17- Verify the referrar value for short Url.
+
 18- Verify the click count for short Url.
+
 19- Verify the date for short Url.
+
 20- Verify the browser for short Url.
 
 ## Further help
