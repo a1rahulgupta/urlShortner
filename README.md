@@ -1,2 +1,2 @@
 # URL Shortener
-URL Shorton Web Application V.1
+URL Shortener Web Application V.1
