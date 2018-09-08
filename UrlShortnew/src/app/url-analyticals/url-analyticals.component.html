@@ -1,0 +1,121 @@
+<div class="col-lg-12">
+<div class="col-lg-12 blockHeader"> Social URL Shortner</div>
+
+
+<div class="col-lg-12">
+  <br>
+
+</div>
+
+
+
+
+<div class="inner cover" *ngIf="analyticalData && analyticalData.shortUrl">
+  <h3>
+    <strong>Analytics data for
+      <a href="{{analyticalData.shortUrl}}" target="new">
+        <u>{{analyticalData.shortUrl}}</u>
+      </a>
+    </strong>
+  </h3>
+  <h5>
+    <strong>Created</strong> {{analyticalData.longUrl[0].onClickDate| date:'medium'}}</h5>
+  <h5>
+    <strong>Original URL:</strong> &nbsp;
+    <a href="{{analyticalData.longUrl[0].longUrl}}" target="new">
+      <u>{{analyticalData.longUrl[0].longUrl}}</u>
+    </a>
+  </h5>
+  <hr>
+  <div class="col-sm-6 boxed">
+    <span style="font-size:10px">Total Clicks</span> <br>
+    <strong style="font-size:20px">{{analyticalData.longUrl.length}}</strong>
+  </div>
+
+
+
+  <div class="col-sm-11" align="right">
+      <select [(ngModel)]="params.period" class="selecttab">
+        <option value="">All Time </option>
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+        <option value="months">Months</option>
+        <option value="years">Years</option>
+      </select>
+      <button type="button" (click)="makeGraph(params)" [disabled]="!params.period" class="btn btn-primary">Done</button>
+    </div>
+
+  <div class=" col-lg-12 row" *ngIf="params.period == 'hours'">
+    <div class="col-lg-4">
+      <h3>Date</h3>
+      <p-calendar [(ngModel)]="timeDate" placeholder="Enter Date" dateFormat="yy-mm-dd" [maxDate]="maxDate" [readonlyInput]="true" ></p-calendar>
+    </div>
+    <div class="col-lg-4">
+      <h3>Start Time </h3>
+      <p-calendar [(ngModel)]="startTime" placeholder="Enter Start Time" [timeOnly]="true"></p-calendar>
+    </div>
+
+    <div class="col-lg-4">
+      <h3>End Time </h3>
+      <p-calendar [(ngModel)]="endTime" placeholder="Enter End Time" [timeOnly]="true"></p-calendar>
+    </div>
+
+  </div>
+
+  <div *ngIf=" params.period == 'days'">
+    <div class="ui-g-12 ui-md-4">
+      <h3>Start Date</h3>
+      <p-calendar [(ngModel)]="params.startDate" placeholder="Enter Start Date" dateFormat="yy-mm-dd" [maxDate]="maxDate" [readonlyInput]="true"></p-calendar>
+    </div>
+
+    <div class="ui-g-12 ui-md-4">
+      <h3>End Date</h3>
+      <p-calendar [(ngModel)]="params.endDate" placeholder="Enter End Date" dateFormat="yy-mm-dd" [maxDate]="maxDate" [readonlyInput]="true"></p-calendar>
+    </div>
+  </div>
+
+
+  <div id="chartdiv" [style.width.%]="100" [style.height.px]="500"></div>
+
+
+  <div class="col-lg-12" *ngFor="let url of analyticalData.longUrl | paginate: { itemsPerPage: 5, currentPage: p }">
+      <div class="row">
+        <div class="col-sm-4">
+          <strong>Platform</strong>
+        </div>
+        <div class="col-sm-8">
+          {{url.userAgent.platform}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <strong>Click Date</strong>
+        </div>
+        <div class="col-sm-8">
+          {{url.onClickDate | date :'medium'}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <strong>Referrer</strong>
+        </div>
+        <div class="col-sm-8">
+          <a href="{{url.referer}}" target="new">{{url.referer}}</a>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-4">
+            <strong>Browser</strong>
+          </div>
+          <div class="col-sm-8">
+            {{url.userAgent.browser}}
+          </div>
+        </div>
+      <br>
+      </div>
+    <pagination-controls align="center" (pageChange)="p = $event"></pagination-controls>
+
+</div>
+<br>
+<br>
+</div>

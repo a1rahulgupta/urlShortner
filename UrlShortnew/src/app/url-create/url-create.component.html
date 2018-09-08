@@ -1,0 +1,94 @@
+<div class="col-lg-12"></div>
+<div class="col-lg-12 blockHeader"> Social URL Shortner</div>
+
+
+<div class="col-lg-12">
+  <br>
+
+</div>
+
+
+<form [formGroup]="urlForm" (ngSubmit)="onFormSubmit(urlForm.value)">
+
+  <div class="inner cover">
+    <h2>Simplify your links</h2>
+
+
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="input-group input-group-lg">
+          <input id="url-field" type="text" formControlName="url" class="form-control" placeholder="Your original URL here">
+          <span class="input-group-btn">
+            <div class="row" style="height: 50px;
+            margin: 4%;">
+              <button type="submit" [disabled]="!urlForm.valid" class="btn btn-primary">SHORTEN-URL</button>
+            </div>
+          </span>
+        </div>
+      </div>
+      <br>
+
+      <div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-12" *ngIf="shortUrl">
+          <a href="{{shortUrl}}" target="new" class="block">
+            <strong>Your Short Url:</strong>
+            &nbsp;{{shortUrl}}</a>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <div class="clear-fix"></div>
+      <div class="col-sm-12 showUrl">
+          <a href="javascript:void(0)" class="btn btn-primary" (click)="getAllUrl();">Show New Url</a>
+        </div>
+        <br>
+        <br>
+
+      <div class="col-lg-12" *ngFor="let url of urlData | paginate: { itemsPerPage: 5, currentPage: p }">
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Original Url</strong>
+          </div>
+          <div class="col-sm-8">
+            <a href="{{url.longUrl}}" target="new">{{url.longUrl}}</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Created</strong>
+          </div>
+          <div class="col-sm-8">
+            {{url.onClickDate | date :'medium'}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Short Url</strong>
+          </div>
+          <div class="col-sm-8">
+            <a href="{{url.shortUrl}}" target="new" (click)="getAllUrl();">{{url.shortUrl}}</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Show Analytics</strong>
+          </div>
+          <div class="col-sm-8">
+            <a class="btn btn-primary" [routerLink]="['/url-analyticals',url.shortUrl]">Click Analytical</a>
+          </div>
+        </div>
+        <br>
+      </div>
+      <pagination-controls align="center" (pageChange)="p = $event"></pagination-controls>
+
+
+
+    </div>
+  </div>
+
+</form>
