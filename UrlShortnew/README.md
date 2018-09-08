@@ -1,6 +1,6 @@
 # MEAN Stack URL Shortener Web Application Developed By Rahul Gupta
 
-URL Shorton Web Application V.1
+URL Shortener Web Application V.1
 
 ## Development server
 
