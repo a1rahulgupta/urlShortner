@@ -32,7 +32,7 @@ Test Cases of URL Shorton Web application:-
 
 ## Test Cases for Social URL Shortner-
 
-1- Verify that cursor is focused on url text box on the page load.
+###- Verify that cursor is focused on url text box on the page load.
 2- Verify that the url text box contains elements such as link , webUrl, with http or https.
 3- Verify that User is able to make short url with Valid webUrl.
 4- Verify that User is not able to make short url with invalid webUrl or invalid link.
